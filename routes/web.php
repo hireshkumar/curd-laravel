@@ -50,16 +50,6 @@ Route::post('forgot-password', [AuthController::class, 'submitForgetPassword'])-
 Route::get('reset-password/{token}', [AuthController::class, 'showResetPassword'])->name('password.reset');
 Route::post('reset-password', [AuthController::class, 'submitResetPassword'])->name('password.update');
 
-
-
-
-
-
-
-
-
-
-
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
 Route::post('/login', [AuthController::class, 'login']);
