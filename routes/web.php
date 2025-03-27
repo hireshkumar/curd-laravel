@@ -54,6 +54,8 @@ Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 
 Route::post('/login', [AuthController::class, 'login']);
 
+
+
 // Route::middleware(['auth.sessionac'])->group(function () {
 
  Route::get('records', [Registrationcontroller::class, 'records'])->name('records');
