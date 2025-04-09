@@ -20,6 +20,7 @@
                 <a class="btn btn-danger" href="{{ route('logout') }}">Logout</a>
                 <a class="btn btn-primary" href="{{ route('import') }}">Import Students</a>
                 <a class="btn btn-success" href="{{ route('export.excel') }}">Export Students</a>
+                <a class="btn btn-success" href="{{ route('recodes') }}">Student Products</a>
             </div>
         </div>
     </div>

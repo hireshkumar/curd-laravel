@@ -150,6 +150,14 @@ public function getCities($state_id)
  
     }
  
+
+    public function recodes()
+    {
+        $records = Student::all(); 
+        return view('recodes', compact('records'));
+
+    }
+    
     
 }
 
