@@ -12,7 +12,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left mb-2">
-                    <h2 style="text-align:center;">Studen Login</h2>
+                    <h2 style="text-align:center;">Student Login</h2>
                 </div>
                 
             </div>

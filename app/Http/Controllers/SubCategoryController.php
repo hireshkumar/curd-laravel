@@ -21,6 +21,8 @@ class SubcategoryController extends Controller
         $categories = Category::active()->get();
         return view('subcategories.create', compact('categories'));
     }
+
+    
     
     public function store(Request $request)
     {

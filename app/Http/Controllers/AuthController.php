@@ -6,34 +6,50 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Student;
+use App\Models\Cart;
 use Illuminate\Support\Facades\Password;
 
 
 class AuthController extends Controller
 {
+    // Show login form
     public function showLoginForm()
     {
         return view('auth.login');
     }
 
+    // Handle login request
     public function login(Request $request)
     {
-       
+        
         $request->validate([
             'email' => 'required|email',
             'password' => 'required',
         ]);
 
-        // Attempt authentication
         $student = Student::where('email', $request->email)->first();
 
         if ($student && Hash::check($request->password, $student->password)) {
-           
+            
             $request->session()->put('uid', $student->id);
-            // dd(session()->all());
-            return redirect()->route('records')->with('success', 'Login successful!');
-        }
 
+           
+            if ($request->session()->has('redirect_after_login_product_id')) {
+                $productId = $request->session()->pull('redirect_after_login_product_id');
+
+               
+                Cart::firstOrCreate([
+                    'user_id' => $student->id,
+                    'product_id' => $productId,
+                ], [
+                    'quantity' => 1,
+                ]);
+
+                return redirect()->route('cart.page')->with('success', 'Product added to cart!');
+            }
+
+            return redirect()->route('home')->with('success', 'Login successful!');
+        }
         return redirect()->route('login')->with('error', 'Invalid Username or Password');
     }
 

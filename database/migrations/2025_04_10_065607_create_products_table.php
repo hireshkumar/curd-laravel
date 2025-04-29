@@ -11,19 +11,20 @@ return new class extends Migration
      */
     public function up(): void
     {
-        
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
             $table->foreignId('subcategory_id')->constrained('subcategories')->onDelete('cascade');
             $table->string('name')->unique();
+            $table->string('sku')->unique();
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
             $table->integer('stock')->default(0);
-            $table->string('image')->nullable(); 
-            $table->boolean('status')->default(1); 
-            $table->timestamps(); 
+            $table->string('image')->nullable();
+            $table->boolean('status')->default(1);
+            $table->timestamps();
         });
+        
     }
 
     /**

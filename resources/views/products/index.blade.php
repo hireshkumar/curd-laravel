@@ -14,6 +14,7 @@
             <tr>
                 <th>#</th>
                 <th>Name</th>
+                <th>Sku</th>
                 <th>Category</th>
                 <th>Subcategory</th>
                 <th>Description</th>
@@ -29,12 +30,18 @@
             <tr> 
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $product->name }}</td>
+                <td>{{ $product->sku }}</td> 
                 <td>{{ $product->category->name ?? '-' }}</td>
                 <td>{{ $product->subcategory->name ?? '-' }}</td>
                 <td>{{ $product->description }}</td>
                 <td>${{ $product->price }}</td>
                 <td>{{ $product->stock }}</td>
-                <td><img src="{{ asset($product->image) }}" width="100"></td>
+                <?php
+                $imgs = $product->image;
+                $img = explode(',',$imgs);
+                // dd($img);
+                ?>
+                <td><img src="{{ asset($img[0]) }}" width="100"></td>
 
 
                 <td>

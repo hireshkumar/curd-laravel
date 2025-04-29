@@ -50,7 +50,7 @@ class Registrationcontroller extends Controller
         'profile_photo' => $imageName,
     ]);
 
-    Mail::to($request->email)->send(new SendEmail($student));
+     Mail::to($request->email)->send(new SendEmail($student));
 
     return redirect('/records')->with('success', 'Registration successful!');
 }
